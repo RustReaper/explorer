@@ -46,7 +46,7 @@ pub fn BlockchainExplorer() -> impl IntoView {
     view! {
         <div class="flex flex-col items-center">
         <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-            Forest Explorer
+            Forest Explorer Preview Test
         </h1>
         <select on:change=move |ev| { rpc_context.set(event_target_value(&ev)) }>
             <option value=Provider::get_network_url(Network::Testnet)>Glif.io Calibnet</option>
