@@ -1,0 +1,39 @@
+name = "forest-explorer"
+main = "build/worker/shim.mjs"
+compatibility_date = "2024-07-13"
+# ChainSafe Static Hosting
+account_id = 'd322f0225d3c91cf1e8a88f3e31e5157'
+
+routes = [{ pattern = "thedev.host", custom_domain = true }]
+
+[durable_objects]
+bindings = [{ name = "RATE_LIMITER", class_name = "RateLimiter" }]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["RateLimiter"]
+
+[assets]
+directory = "assets"
+
+[observability.logs]
+enabled = true
+
+[build]
+command = """
+yarn assets &&
+yarn css-minify &&
+yarn wasm-pack &&
+worker-build --release --features ssr --no-default-features
+"""
+
+[env.quick]
+[env.quick.durable_objects]
+bindings = [{ name = "RATE_LIMITER", class_name = "RateLimiter" }]
+[env.quick.build]
+command = """
+yarn assets &&
+yarn css-minify &&
+yarn wasm-pack-dev &&
+worker-build --dev --no-opt --features ssr --no-default-features
+"""
