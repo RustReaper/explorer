@@ -1,6 +1,6 @@
 name = "forest-explorer"
 main = "build/worker/shim.mjs"
-compatibility_date = "2025-04-26"
+compatibility_date = "2025-04-16"
 # ChainSafe Static Hosting
 account_id = 'd322f0225d3c91cf1e8a88f3e31e5157'
 
